@@ -19,6 +19,7 @@
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 3rem;
+  --header-height: 11rem;
 }
 
 
@@ -37,6 +38,26 @@ body {
 /* Links use the accent color */
 a {
   color: var(--color-accent);
+}
+
+/* Offset anchor jumps so the sticky header does not hide section titles */
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--space-lg));
+}
+
+
+/* ==========================================================================
+   Light theme (tutoring page)
+   ========================================================================== */
+
+body.theme-light {
+  --color-text: #14213d;
+  --color-bg: #f8fbff;
+  --bg-mid: #eaf2fb;
+  --bg-bottom: #d9e8f6;
+  --color-border: rgba(20, 60, 110, 0.25);
+  --color-accent: #1d5fb4;
+  --panel-bg: rgba(255, 255, 255, 0.75);
 }
 
 
@@ -67,15 +88,20 @@ main {
    Header
    ========================================================================== */
 
-/* Site name, centered at the top of the page */
+/* Site name and menu stay visible at the top while scrolling */
 header {
-  padding: var(--space-lg) var(--space-lg) var(--space-md);
-  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
 }
 
-/* Remove the default heading margins; the header padding handles spacing */
+/* Site name, centered; padding lives here so it does not affect the nav */
 header h1 {
   margin: 0;
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  text-align: center;
 }
 
 
@@ -83,17 +109,12 @@ header h1 {
    Navigation
    ========================================================================== */
 
-/* Menu bar that stays visible at the top while scrolling */
 nav {
-  position: sticky;
-  top: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-md);
   padding: var(--space-sm) var(--space-lg);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
 }
 
 nav a {
@@ -105,7 +126,6 @@ nav a:hover {
   color: var(--color-accent);
   text-decoration: underline;
 }
-
 
 /* ==========================================================================
    Section visibility (one section displayed at a time)
