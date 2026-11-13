@@ -7,9 +7,10 @@
   --color-bg: #f8fbff;
   --color-border: rgba(20, 60, 110, 0.25);
   --color-accent: #1d5fb4;
-  --color-text-soft: #4a5673;
   --color-accent-2: #c8362e;
+  --color-text-soft: #4a5673;
   --color-hover: #eef1fc;
+  --color-highlight: rgba(255, 220, 90, 0.8);
   --grid: #d6dcf0;
   --grid-strong: #b4bde3;
 
@@ -50,7 +51,7 @@ header.bar {
 
 
 /* ==========================================================================
-   Components
+   Intro block (hero) and text
    ========================================================================== */
 
 /* Intro block with a red "margin line" on the left, like a school notebook */
@@ -66,11 +67,38 @@ header.bar {
   line-height: 1.15;
 }
 
+.hero h2,
+.about h2 {
+  margin: 0.25rem 0 var(--space-lg);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  line-height: 1.2;
+}
+
 .lead {
   margin: var(--space-md) 0 0;
   font-size: 1.2rem;
   color: var(--color-text-soft);
 }
+
+/* Highlighter effect, like on a sheet of paper */
+mark.highlight {
+  color: var(--color-text);
+  font-weight: 500;
+  background: linear-gradient(
+    transparent 40%,
+    var(--color-highlight) 40%,
+    var(--color-highlight) 90%,
+    transparent 90%
+  );
+  padding: 0 0.15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 
 .actions {
   display: flex;
@@ -79,7 +107,7 @@ header.bar {
   margin-top: var(--space-lg);
 }
 
-/* Buttons: outlined by default, filled for the main action */
+/* Outlined by default, filled for the main action */
 .btn {
   display: inline-block;
   padding: 0.85rem 1.4rem;
@@ -105,17 +133,21 @@ header.bar {
   filter: brightness(0.92);
 }
 
-/* Second block, separated from the intro by a thin line */
+
+/* ==========================================================================
+   Content blocks and columns
+   ========================================================================== */
+
+/* Block separated from the intro by a thin line */
 .about {
   margin-top: var(--space-xl);
   padding-top: var(--space-xl);
   border-top: 1px solid var(--color-border);
 }
 
-.about h2 {
-  margin: 0.25rem 0 var(--space-lg);
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-  line-height: 1.2;
+/* Generic block below the intro (prices, travel, contact...) */
+.pricing {
+  margin-top: var(--space-xl);
 }
 
 /* Two columns: text on the left, list on the right */
@@ -130,7 +162,32 @@ header.bar {
   margin: 0 0 var(--space-sm);
 }
 
-/* Ruled list: a thin line between items */
+/* Two equal columns (e.g. training / experience), aligned at the top */
+.cols-equal {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+/* Titles of a block or of a column */
+.pricing h3,
+.cols h3 {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.65rem;
+  line-height: 1.2;
+}
+
+/* On narrow screens, stack the columns (must stay after .cols-equal) */
+@media (max-width: 780px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   Ruled list: a thin line between items
+   ========================================================================== */
+
 .ruled-list {
   margin: 0;
   padding: 0;
@@ -154,16 +211,9 @@ header.bar {
   color: var(--color-text-soft);
 }
 
-/* On narrow screens, stack the two columns */
-@media (max-width: 780px) {
-  .cols {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 
 /* ==========================================================================
-   Tables
+   Tables and notes
    ========================================================================== */
 
 table {
@@ -174,6 +224,67 @@ table {
 th,
 td {
   padding: var(--space-sm);
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid var(--color-border);
+}
+
+/* Column headers: small, muted, uppercase */
+thead th {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* Row headers (levels) stand out, prices stay aligned */
+tbody th {
+  font-weight: 600;
+}
+
+td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Net price after tax credit, on the same line, lighter than the real price */
+td .net {
+  color: var(--color-accent-2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Small print under the table (VAT mention) */
+.note {
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+/* Second note (asterisk explanation): stacked under the first, in red */
+.note + .note {
+  margin-top: 0.25rem;
+  color: var(--color-accent-2);
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   Footer (two columns: link on the left, legal mentions on the right)
+   ========================================================================== */
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+/* Legal mentions: small and muted */
+footer .legal {
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
 }
