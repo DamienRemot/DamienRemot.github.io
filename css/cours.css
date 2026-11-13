@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Tutoring page: light theme
+   ========================================================================== */
+
+:root {
+  --color-text: #14213d;
+  --color-bg: #f8fbff;
+  --color-border: rgba(20, 60, 110, 0.25);
+  --color-accent: #1d5fb4;
+  --color-text-soft: #4a5673;
+  --color-accent-2: #c8362e;
+  --color-hover: #eef1fc;
+  --grid: #d6dcf0;
+  --grid-strong: #b4bde3;
+
+  --content-width: 1040px;
+  --header-height: 4rem;
+}
+
+/* Squared-paper background at the top of the page, fading out after 640px */
+body {
+  background:
+    linear-gradient(to bottom, transparent 55%, var(--color-bg)) top / 100% 640px no-repeat,
+    repeating-linear-gradient(to bottom, var(--grid-strong) 0 1px, transparent 1px 32px) top / 100% 640px no-repeat,
+    repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px 8px) top / 100% 640px no-repeat,
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px 32px) top / 100% 640px no-repeat,
+    var(--color-bg);
+}
+
+
+/* ==========================================================================
+   Header (compact bar)
+   ========================================================================== */
+
+header.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-lg);
+  padding: var(--space-sm) max(var(--space-lg), calc((100% - var(--content-width)) / 2));
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.bar nav {
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.brand {
+  color: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+/* Intro block with a red "margin line" on the left, like a school notebook */
+.hero {
+  max-width: 46rem;
+  padding-left: var(--space-md);
+  border-left: 2px solid var(--color-accent-2);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+}
+
+.lead {
+  margin: var(--space-md) 0 0;
+  font-size: 1.2rem;
+  color: var(--color-text-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--space-lg);
+}
+
+/* Buttons: outlined by default, filled for the main action */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.4rem;
+  border: 2px solid var(--color-text);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--color-hover);
+}
+
+.btn-primary {
+  background: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-2);
+  filter: brightness(0.92);
+}
+
+/* Second block, separated from the intro by a thin line */
+.about {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.about h2 {
+  margin: 0.25rem 0 var(--space-lg);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+/* Two columns: text on the left, list on the right */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.cols p {
+  margin: 0 0 var(--space-sm);
+}
+
+/* Ruled list: a thin line between items */
+.ruled-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruled-list li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ruled-list li:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.ruled-list strong {
+  display: block;
+}
+
+.ruled-list span {
+  color: var(--color-text-soft);
+}
+
+/* On narrow screens, stack the two columns */
+@media (max-width: 780px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
