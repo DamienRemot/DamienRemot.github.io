@@ -10,32 +10,41 @@
 <body class="theme-light">
 
   <header class="bar">
-    <nav aria-label="Navigation principale">
-      <a href="#presentation">Accueil</a>
-      <a href="#parcours">Mon parcours</a>
-      <a href="#tarifs">Les tarifs</a>
-      <a href="#contact">Me contacter</a>
-    </nav>
-  </header>
+  <a href="#presentation" class="logo">
+    <img src="../pictures/logo-dr.svg" alt="Damien Remot, accueil">
+  </a>
+  <nav aria-label="Navigation principale">
+    <a href="#presentation">Accueil</a>
+    <a href="#parcours">Mon parcours</a>
+    <a href="#tarifs">Les tarifs</a>
+    <a href="#contact">Me contacter</a>
+  </nav>
+</header>
 
   <main class="tabs">
     <section id="presentation" class="default">
 
-      <div class="hero">
-        <h1>Cours particuliers de mathématiques</h1>
-        <p class="lead">
-          Bonjour ! Je suis Damien et je suis docteur en probabilités et statistiques, 
-          mais aussi professeur particulier à mes heures perdues ^^
-        </p>
-        <p class="lead">
-          J'accompagne des étudiants du collège au master depuis quatre années déjà, pour les aider à progresser en mathématiques 
-          et à réussir leurs examens.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contact">Demander un premier cours gratuit</a>
-          <a class="btn" href="#tarifs">Voir les tarifs</a>
+      <div class="intro">
+        <div class="hero">
+          <h1>Cours particuliers de mathématiques</h1>
+          <p class="lead">
+            Bonjour ! Je suis Damien et je suis docteur en probabilités et statistiques, 
+            mais aussi professeur particulier à mes heures perdues ^^
+          </p>
+          <p class="lead">
+            J'accompagne des étudiants du collège au master depuis quatre années déjà, pour les aider à progresser en mathématiques 
+            et à réussir leurs examens.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Demander un premier cours gratuit</a>
+            <a class="btn" href="#tarifs">Voir les tarifs</a>
+          </div>
         </div>
+
+        <img class="portrait" src="../pictures/portrait.webp"
+         alt="Damien Remot" width="800" height="800">
       </div>
+      
 
       <div class="about">
         <h2>Un suivi précis, du cours aux évaluations</h2>
@@ -158,7 +167,7 @@
         <p>
           Vous êtes curieux de mes travaux récents ou de mes projets en cours,
           en dehors de l'enseignement ? <br>
-          N'hésitez pas à faire un tour sur ma <a href="../">page web personnelle</a> !
+          N'hésitez pas à faire un tour sur ma <a href="../fr/">page web personnelle</a> !
         </p>
       </div>
       </div>
@@ -239,7 +248,7 @@
 
     </section>
 
-        <section id="contact">
+    <section id="contact">
 
       <div class="hero">
         <h2>Me contacter</h2>
@@ -265,9 +274,19 @@
 
   <footer>
     <p class="legal">
-      Damien Remot, entrepreneur individuel · SIRET : 980159354 00029<br>
-      Organisme de services à la personne agréé · N° SAP : SAP980159354
+      <span>Damien Remot, entrepreneur individuel ·</span>
+      <span>SIRET : 980159354 00029</span><br>
+      <span>Organisme de services à la personne agréé ·</span>
+      <span>N° SAP : SAP980159354</span>
     </p>
+    <div class="footer-logos">
+      <a href="#presentation">
+        <img src="../pictures/logo-dr.svg" alt="Logo Damien Remot">
+      </a>
+      <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" target="_blank" rel="noopener noreferrer">
+        <img src="../pictures/logo-sap.webp" alt="Services à la personne (page officielle sur le crédit d'impôt)">
+      </a>
+    </div>
   </footer>
 
 </body>

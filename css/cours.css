@@ -34,10 +34,12 @@ body {
    ========================================================================== */
 
 header.bar {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: left;
   gap: var(--space-sm) var(--space-lg);
   padding: var(--space-sm) max(var(--space-lg), calc((100% - var(--content-width)) / 2));
   background: color-mix(in srgb, var(--color-bg) 88%, transparent);
@@ -49,6 +51,40 @@ header.bar {
   justify-content: flex-end;
 }
 
+.bar .logo img {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+}
+
+/* Small screens: logo above, links centred and tighter (must stay after .bar nav) */
+@media (max-width: 780px) {
+  header.bar {
+    position: static;  
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .bar .logo img {
+    height: 2rem;
+  }
+
+  .bar nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+
+  .bar nav a {
+    font-size: 0.95rem;
+  }
+}
+
+/* Clicking a tab shouldn't scroll the page: keep the header visible */
+.tabs section {
+  scroll-margin-top: 10rem;
+}
 
 /* ==========================================================================
    Intro block (hero) and text
@@ -93,6 +129,37 @@ mark.highlight {
   padding: 0 0.15em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+/* Text block on the left, portrait on the right */
+.intro {
+  display: flex;
+  align-items: flex-start;     /* portrait aligned with the top of the text */
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+/* Lets the text block shrink instead of pushing the portrait out */
+.intro .hero {
+  min-width: 0;
+}
+
+.portrait {
+  flex-shrink: 0;                 /* never squash the photo into an oval */
+  width: 14rem;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 50%;
+  /* Ring of background colour to detach the photo from the grid, then a soft shadow */
+  box-shadow: 0 0 0 4px var(--color-bg), 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Small screens: portrait above the text, centred (must stay after .intro) */
+@media (max-width: 780px) {
+  .intro {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 
 
@@ -268,10 +335,6 @@ td .net {
 
 
 /* ==========================================================================
-   Footer (two columns: link on the left, legal mentions on the right)
-   ========================================================================== */
-
-/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -287,4 +350,32 @@ footer {
 footer .legal {
   font-size: 0.85rem;
   color: var(--color-text-soft);
+}
+
+footer .legal span {
+  white-space: nowrap;
+}
+
+
+/* Logos under the legal mentions: side by side, centred */
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;                /* stack on very narrow screens */
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.footer-logos img {
+  display: block;
+  height: 3rem;
+  width: auto;
+}
+
+/* Small screens: extra space under the logos (workaround for a mobile rendering glitch) */
+@media (max-width: 780px) {
+  footer {
+    padding-bottom: calc(var(--space-xl) * 2);
+  }
 }
