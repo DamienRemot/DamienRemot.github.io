@@ -6,34 +6,46 @@
   <title>Damien Remot</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="alternate" hreflang="en" href="https://damienremot.github.io/">
+  <link rel="alternate" hreflang="fr" href="https://damienremot.github.io/fr/">
 </head>
 <body>
 
   <header>
-  <h1>Damien Remot</h1>
-  <nav aria-label="Main">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#background">Background</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <a class="lang-switch" href="fr/" lang="fr" hreflang="fr">Français</a>
+    <h1>Damien Remot</h1>
+    <nav aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
 </header>
 
   <main class="tabs">
     <section id="home" class="default">
-      <h2>Hi, welcome to my personal web page!</h2>
-      <p>
-        I'm Damien Remot, and here you can find a summary of my work,
-        my current projects and my background ^^
-      </p>
+        <div class="intro">
+          <div class="text">
+            <h2>Hi, welcome to my personal web page!</h2>
+            <p>
+              I'm Damien Remot, and here you can find a summary of my work,
+              my current projects and my background ^^
+            </p>
+          </div>
+          <img class="portrait" src="../pictures/portrait.webp"
+              alt="Damien Remot" width="800" height="800">
+        </div>
       <p>
         I earned a PhD in applied mathematics in 2025. My thesis focused
         on active sampling and surrogate modeling for expensive simulators, in
         collaboration with NXP Semiconductors and ANITI.
       </p>
+      <img class="photo" src="../pictures/phd-defense.webp"
+      alt="Damien Remot presenting his PhD thesis defense"
+      width="1800" height="963">
       <p>
         My work sits between probability, statistics and machine learning, with
-        a taste for turning methods into code that actually runs. That is how
+        a taste for turning methods into code that actually runs! That is how
         <a href="#projects">AIMS</a> came about, an open-source Python project for adaptive and
         iterative model sampling, based on the work done during my PhD.
       </p>

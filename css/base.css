@@ -70,7 +70,7 @@ section {
 
 /* Site name and menu stay visible at the top while scrolling */
 header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 10;
   background: var(--color-bg);
